@@ -78,6 +78,7 @@ async function getOpenAIResponse() {
         };
     }
 
+    // another duplicate call for user
     // displayResult(`User: ${prompt} (Tokens: ${countTokens(prompt)})`, "user-input");
 
     try {
