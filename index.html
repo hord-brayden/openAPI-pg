@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <title>OpenAI API Demo</title>  
+</head>
+<body>
+    <h1>OpenAI API Demo</h1>
+    <h4 style="text-align: center;"><a href="https://platform.openai.com/playground?lang=node.js&amp;mode=complete">Playground</a></h4>
+    <form onsubmit="event.preventDefault(); displayUserInput(); getOpenAIResponse();">
+        <div>
+            <label for="endpoint">Endpoint:</label>
+            <select id="endpoint" onchange="toggleModelOptions()">
+                <option value="completions">Completions</option>
+                <option value="chat">Chat</option>
+                <option value="dall-e">DALL-E</option>
+            </select>
+        </div>
+        <div>
+            <label for="model">Model:</label>
+            <select id="model">
+                <option value="text-davinci-001">text-davinci-001</option>
+                <option value="text-curie-001">text-curie-001</option>
+                <option value="text-babbage-001">text-babbage-001</option>
+                <option value="text-ada-001">text-ada-001</option>
+                <option value="code-davinci-001">code-davinci-001</option>
+                <option value="code-cushman-001">code-cushman-001</option>
+                <option value="text-davinci-002">text-davinci-002</option>
+                <option value="text-davinci-003">text-davinci-003</option>
+                <option value="gpt-3.5-turbo">gpt-3.5-turbo</option>
+                <option value="gpt-3.5-turbo-0301">gpt-3.5-turbo-0301</option>
+                <option value="gpt-4" class="experimental">gpt-4 (Non-Functional)</option>
+            </select>
+        </div>
+        <div>
+            <label for="prompt">Prompt:</label>
+            <textarea rows="5" cols="40" type="text" id="prompt" placeholder="Enter your prompt"></textarea>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    
+    <div class="file-ops">
+        <h2>File Operations</h2>
+        <div>
+            <label for="fileId">File ID:</label>
+            <input type="text" id="fileId">
+        </div>
+        <div>
+            <button onclick="deleteSelectedFile()">Delete File</button>
+            <button onclick="retrieveSelectedFile()">Retrieve File Info</button>
+            <button onclick="retrieveSelectedFileContent()">Retrieve File Content</button>
+        </div>
+        <div>
+            <label for="uploadFile">Upload File:</label>
+            <input type="file" id="uploadFile" accept=".jsonl, .xlsx, .csv">
+            <button onclick="uploadSelectedFile()">Upload File</button>
+        </div>
+    </div>
+    <div id="responseContainer">
+        <h2>Response:</h2>
+        <div id="responseArea" style="width: 100%; height: 200px; overflow-y: auto; border: 1px solid;"></div>
+    </div>
+    <script src="runningScript.js"></script>
+    <script src="tokenCounter.js"></script>
+</body>
+</html>
